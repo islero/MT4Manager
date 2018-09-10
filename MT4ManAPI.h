@@ -1057,7 +1057,7 @@ namespace Manager {
 			RetValues UserRecordNew([Out] UserRecord %UserRec)
 			{
 
-				MetaQuotes::UserRecord UserInfo;
+				MetaQuotes::UserRecord UserInfo = {0};
 				UserRec.ToMT4(&UserInfo);
 				int res = m_manager->UserRecordNew(&UserInfo);
 
@@ -1236,7 +1236,7 @@ namespace Manager {
 			{
 
 				int total = 0;
-				MetaQuotes::DailyGroupRequest* reqsts = NULL;
+				MetaQuotes::DailyGroupRequest* reqsts = new MetaQuotes::DailyGroupRequest[request->Count];
 				reqsts->total = logins->Count;
 
 				for (int i = 0; i < request->Count; i++)
